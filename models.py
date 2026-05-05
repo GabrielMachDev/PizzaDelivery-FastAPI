@@ -12,14 +12,14 @@ Base = declarative_base()
 class User(Base):
     __tablename__ = "users"
 
-    id = Column("id", Integer, primary_key=True, autoincrement=True)
+    id = Column("id", Integer, primary_key = True, autoincrement = True)
     name = Column("name", String)
-    email = Column("email", String, nullable=False)
+    email = Column("email", String, nullable = False)
     password = Column("password", String)
     status = Column("status", Boolean)
-    admin = Column("admin", Boolean, default=False)
+    admin = Column("admin", Boolean, default = False)
 
-    def __init__(self, name, email, password, status=True, admin=False):
+    def __init__(self, name, email, password, status = True, admin = False):
         self.name = name
         self.email = email
         self.password = password
@@ -35,12 +35,12 @@ class Order(Base):
     #     ("FINISH", "FINISH")
     # }
 
-    id = Column("id", Integer, primary_key=True, autoincrement=True)
+    id = Column("id", Integer, primary_key = True, autoincrement = True)
     user = Column("user", ForeignKey("users.id"))
     status = Column("status", String)
     price = Column("price", Float)
 
-    def __init__(self, user, status="PENDING", price=0):
+    def __init__(self, user, status="PENDING", price = 0):
         self.user = user
         self.status = status
         self.price = price
@@ -48,7 +48,7 @@ class Order(Base):
 class OrderItem(Base):
     __tablename__ = "orderItems"
 
-    id = Column("id", Integer, primary_key=True, autoincrement=True)
+    id = Column("id", Integer, primary_key = True, autoincrement = True)
     quantity = Column("quantity", Integer)
     flavor = Column("flavor", String)
     size = Column("size", String)
@@ -60,4 +60,4 @@ class OrderItem(Base):
         self.flavor = flavor
         self.size = size
         self.unitPrice = unitPrice
-        self.order = order 
+        self.order = order
